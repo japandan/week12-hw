@@ -1,8 +1,11 @@
 ---
-title: "Week12hw"
+title: "Homework 12"
 author: "Daniel Vogel"
 date: "11/6/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -37,10 +40,17 @@ library(ggplot2)
 <!--         An html file, including any folders with images -->
 
 
+Documents to include:
+
+- Your Rmd file
+- A Word file
+- An html file, including any folders with images
 
 
 ```{r cars}
 summary(gapminder)
+
+print('Median Life Expectancy By Continent')
 
 gapminder %>%
     filter(year == 2007) %>%
@@ -49,17 +59,27 @@ gapminder %>%
 
 ```
 
-## Including Plots
+## Plots of Gapminder Data
 
 You can also embed plots, for example:
 
-```{r plots, echo=FALSE}
+```{r plot1, fig.cap="GGPLOT SAMPLE", echo=TRUE}
 
-    
-library("ggplot2")
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
   geom_boxplot(outlier.colour = "hotpink") +
+  labs(title="Plot of Life Expectancy by Continent",
+        x ="Continent", y = "Life Expectancy")+
   geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Same plot, different dimensions.
+50% smaller.
+
+```{r plot2, out.width="50%", fig.cap="50% size GGPLOT SAMPLE", echo=FALSE}
+
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "hotpink") +
+  labs(title="Plot of Life Expectancy by Continent",
+        x ="Continent", y = "Life Expectancy")+
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
+```
