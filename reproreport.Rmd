@@ -1,0 +1,65 @@
+---
+title: "Week12hw"
+author: "Daniel Vogel"
+date: "11/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load the gapminder library and data
+install.packages("gapminder")
+library(gapminder)
+data(gapminder)
+
+# Load other packages needed for data manipulation and plotting
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+```
+
+## R Markdown
+
+
+<!-- For this week's homework, create your own R markdown file and perform the following tasks: -->
+
+<!--     Update the title with "Homework 12". -->
+<!--     Update the author with your name. -->
+<!--     Remove all of the pre-populated code chunks and text. -->
+<!--     Load the `ggplot2` package, read in the gapminder data and create a plot. -->
+<!--     Use chunk options to recreate the same plot with different dimensions. -->
+<!--     Add some R code directly into the text of your document. -->
+<!--     Export your document as a Word document and as an html document. -->
+<!--     Zip these documents into a single zip archive and upload to Blackboard. Documents to include: -->
+<!--         Your Rmd file -->
+<!--         A Word file -->
+<!--         An html file, including any folders with images -->
+
+
+
+
+```{r cars}
+summary(gapminder)
+
+gapminder %>%
+    filter(year == 2007) %>%
+    group_by(continent) %>%
+    summarise(lifeExp = median(lifeExp), .groups='drop')
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r plots, echo=FALSE}
+
+    
+library("ggplot2")
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "hotpink") +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
